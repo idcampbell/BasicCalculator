@@ -21,35 +21,89 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public Integer[] parseNumbers() {
+    public Integer[] parseNumbers() throws Exception {
         EditText numberText1 = (EditText) findViewById(R.id.numberText1);
         EditText numberText2 = (EditText) findViewById(R.id.numberText2);
-        Integer number1 = Integer.parseInt(numberText1.getText().toString());
-        Integer number2 = Integer.parseInt(numberText2.getText().toString());
-        Integer[] numbers = new Integer[] {number1, number2};
+        String number1 = numberText1.getText().toString();
+        String number2 = numberText2.getText().toString();
+
+        // If the user doesn't enter input, throw an exception.
+        if (number1.equals("") || number2.equals("")) {
+            throw new Exception("number not provided");
+        }
+        // Store the resulting numbers in an array.
+        Integer[] numbers = new Integer[] {Integer.parseInt(number1), Integer.parseInt(number2)};
         return numbers;
     }
 
+    public void doMath(View view) {
+        // Parse the user input.
+        Integer[] numbers;
+        try {
+            numbers = parseNumbers();
+        } catch(Exception e) {
+            return;
+        }
+        // Compute the result of applying the selected operation to the input numbers.
+        String result = "";
+        switch(view.getId()){
+            case R.id.addition:
+                result = Integer.toString(numbers[0]+numbers[1]);
+                break;
+            case R.id.subtraction:
+                result = Integer.toString(numbers[0]-numbers[1]);
+                break;
+            case R.id.multiplication:
+                result = Integer.toString(numbers[0]*numbers[1]);
+                break;
+            case R.id.division:
+                result = Integer.toString(numbers[0]/numbers[1]);
+                break;
+            default:
+        }
+        goToActivity2(result);
+    }
+
     public void addNumbers(View view) {
-        Integer[] numbers = parseNumbers();
+        Integer[] numbers;
+        try {
+            numbers = parseNumbers();
+        } catch(Exception e) {
+            return;
+        }
         String result = Integer.toString(numbers[0]+numbers[1]);
         goToActivity2(result);
     }
 
     public void subtractNumbers(View view) {
-        Integer[] numbers = parseNumbers();
+        Integer[] numbers;
+        try {
+            numbers = parseNumbers();
+        } catch(Exception e) {
+            return;
+        }
         String result = Integer.toString(numbers[0]-numbers[1]);
         goToActivity2(result);
     }
 
     public void multiplyNumbers(View view) {
-        Integer[] numbers = parseNumbers();
+        Integer[] numbers;
+        try {
+            numbers = parseNumbers();
+        } catch(Exception e) {
+            return;
+        }
         String result = Integer.toString(numbers[0]*numbers[1]);
         goToActivity2(result);
     }
 
     public void divideNumbers(View view) {
-        Integer[] numbers = parseNumbers();
+        Integer[] numbers;
+        try {
+             numbers = parseNumbers();
+        } catch(Exception e) {
+            return;
+        }
         String result = Integer.toString(numbers[0]/numbers[1]);
         goToActivity2(result);
     }
