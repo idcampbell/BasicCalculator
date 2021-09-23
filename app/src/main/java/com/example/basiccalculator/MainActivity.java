@@ -63,48 +63,4 @@ public class MainActivity extends AppCompatActivity {
         }
         goToActivity2(result);
     }
-
-    public void addNumbers(View view) {
-        Integer[] numbers;
-        try {
-            numbers = parseNumbers();
-        } catch(Exception e) {
-            return;
-        }
-        String result = Integer.toString(numbers[0]+numbers[1]);
-        goToActivity2(result);
-    }
-
-    public void subtractNumbers(View view) {
-        Integer[] numbers;
-        try {
-            numbers = parseNumbers();
-        } catch(Exception e) {
-            return;
-        }
-        String result = Integer.toString(numbers[0]-numbers[1]);
-        goToActivity2(result);
-    }
-
-    public void multiplyNumbers(View view) {
-        Integer[] numbers;
-        try {
-            numbers = parseNumbers();
-        } catch(Exception e) {
-            return;
-        }
-        String result = Integer.toString(numbers[0]*numbers[1]);
-        goToActivity2(result);
-    }
-
-    public void divideNumbers(View view) {
-        Integer[] numbers;
-        try {
-             numbers = parseNumbers();
-        } catch(Exception e) {
-            return;
-        }
-        String result = Integer.toString(numbers[0]/numbers[1]);
-        goToActivity2(result);
-    }
 }
